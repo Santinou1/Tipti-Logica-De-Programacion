@@ -139,26 +139,3 @@ Configuración aplicada: Modo claro
 
 ---
 
-# Mejoras Opcionales
-
-### Uso de Operador Lógico `||`
-El operador lógico `||` puede simplificar el código para asignar el valor de `configuracionFinal`:
-```javascript
-configuracionFinal = configuracionUsuario || configuracionPredeterminada || null;
-```
-
-### Manejo de Excepciones
-Para mejorar la robustez del código, podemos agregar manejo de excepciones en caso de que ocurra algún error inesperado:
-```javascript
-try {
-  configuracionFinal = configuracionUsuario || configuracionPredeterminada || null;
-
-  if (configuracionFinal !== null) {
-    console.log("Configuración aplicada:", configuracionFinal);
-  } else {
-    throw new Error("No se pudo aplicar ninguna configuración.");
-  }
-} catch (error) {
-  console.error(error.message);
-}
-```
