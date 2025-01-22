@@ -1,21 +1,30 @@
-1. Declaración de variables
-javascript
-Copiar
+
+# Declaración de Variables
+
+```javascript
 let configuracionUsuario; // Esta variable no tiene un valor asignado, por lo tanto, es undefined
 let configuracionPredeterminada = "Modo oscuro"; // Este es el valor predeterminado
 let configuracionFinal = null; // Se usará para almacenar el valor final
-configuracionUsuario:
-No tiene valor asignado, por lo que su estado inicial será undefined. Simula un escenario donde el usuario no ha proporcionado una configuración personalizada.
+```
 
-configuracionPredeterminada:
-Se inicializa con el valor "Modo oscuro". Esto representa el valor predeterminado que usaremos si el usuario no define uno.
+### Descripción de las variables
+1. **`configuracionUsuario`**:  
+   - Estado inicial: `undefined`.
+   - Simula un escenario donde el usuario no ha proporcionado una configuración personalizada.
 
-configuracionFinal:
-Inicialmente está en null, indicando que aún no se ha determinado qué configuración se aplicará.
+2. **`configuracionPredeterminada`**:  
+   - Inicializada con el valor `"Modo oscuro"`.
+   - Representa el valor predeterminado que usaremos si el usuario no define uno.
 
-2. Lógica principal: Verificación y asignación
-javascript
-Copiar
+3. **`configuracionFinal`**:  
+   - Inicialmente está en `null`.
+   - Indica que aún no se ha determinado qué configuración se aplicará.
+
+---
+
+# Lógica Principal: Verificación y Asignación
+
+```javascript
 if (configuracionUsuario !== undefined && configuracionUsuario !== null) {
   // Si el usuario ha definido una configuración válida
   configuracionFinal = configuracionUsuario;
@@ -26,92 +35,130 @@ if (configuracionUsuario !== undefined && configuracionUsuario !== null) {
   // Si no hay configuración de usuario ni predeterminada, mostramos un error
   console.error("Error: No hay configuración disponible.");
 }
-Este bloque utiliza una serie de condicionales para decidir qué valor se asignará a configuracionFinal.
+```
 
-Primera condición:
+### Explicación del flujo
+1. **Primera condición:**
+   ```javascript
+   if (configuracionUsuario !== undefined && configuracionUsuario !== null)
+   ```
+   - Verifica que `configuracionUsuario` no sea `undefined` ni `null`.
+   - Si se cumple:  
+     ```javascript
+     configuracionFinal = configuracionUsuario;
+     ```
 
-javascript
-Copiar
-if (configuracionUsuario !== undefined && configuracionUsuario !== null)
-Verifica que configuracionUsuario no sea undefined ni null.
-Si se cumple, significa que el usuario proporcionó un valor válido y se asigna ese valor a configuracionFinal:
-javascript
-Copiar
-configuracionFinal = configuracionUsuario;
-Segunda condición:
+2. **Segunda condición:**
+   ```javascript
+   else if (configuracionPredeterminada !== null)
+   ```
+   - Si no hay configuración de usuario, verifica si `configuracionPredeterminada` tiene un valor válido.
+   - Si se cumple:  
+     ```javascript
+     configuracionFinal = configuracionPredeterminada;
+     ```
 
-javascript
-Copiar
-else if (configuracionPredeterminada !== null)
-Si la primera condición no se cumple, verifica si hay un valor válido en configuracionPredeterminada (es decir, que no sea null).
-Si se cumple, asigna ese valor a configuracionFinal:
-javascript
-Copiar
-configuracionFinal = configuracionPredeterminada;
-Tercera condición (bloque else):
+3. **Tercera condición (bloque `else`):**
+   ```javascript
+   else {
+     console.error("Error: No hay configuración disponible.");
+   }
+   ```
+   - Si ninguna condición se cumple, muestra un mensaje de error en la consola.
 
-javascript
-Copiar
-else {
-  console.error("Error: No hay configuración disponible.");
-}
-Si ninguna de las condiciones anteriores se cumple, significa que no hay configuración válida disponible.
-Muestra un mensaje de error en la consola.
-3. Mostrar el resultado final
-javascript
-Copiar
+---
+
+# Mostrar el Resultado Final
+
+```javascript
 if (configuracionFinal !== null) {
   console.log("Configuración aplicada:", configuracionFinal);
 } else {
   console.log("No se pudo aplicar ninguna configuración.");
 }
-Primera condición:
+```
 
-javascript
-Copiar
-if (configuracionFinal !== null)
-Verifica si configuracionFinal tiene un valor válido.
-Si se cumple, muestra la configuración aplicada:
-javascript
-Copiar
-console.log("Configuración aplicada:", configuracionFinal);
-Segunda condición (bloque else):
+### Explicación
+1. **Primera condición:**
+   ```javascript
+   if (configuracionFinal !== null)
+   ```
+   - Verifica si `configuracionFinal` tiene un valor válido.
+   - Si se cumple:  
+     ```javascript
+     console.log("Configuración aplicada:", configuracionFinal);
+     ```
 
-javascript
-Copiar
-else {
-  console.log("No se pudo aplicar ninguna configuración.");
-}
-Si configuracionFinal es null, significa que no se pudo determinar una configuración válida y muestra un mensaje de advertencia.
-Flujo completo del código
-Declaramos las variables:
+2. **Segunda condición (bloque `else`):**
+   ```javascript
+   else {
+     console.log("No se pudo aplicar ninguna configuración.");
+   }
+   ```
+   - Si `configuracionFinal` es `null`, muestra un mensaje indicando que no hay configuración válida.
 
-configuracionUsuario: Valor proporcionado por el usuario (inicialmente undefined).
-configuracionPredeterminada: Valor predeterminado (inicialmente "Modo oscuro").
-configuracionFinal: Variable que almacenará la configuración elegida.
-Condicionales para determinar el valor final:
+---
 
-Si el usuario define una configuración válida (configuracionUsuario no es undefined ni null), se usa esa.
-Si no, se verifica si hay un valor predeterminado (configuracionPredeterminada no es null) y se usa ese.
-Si ninguna de las anteriores se cumple, muestra un error porque no hay configuraciones válidas.
-Mostrar resultado:
+# Flujo Completo del Código
+1. **Declaración de Variables:**
+   - `configuracionUsuario`: Inicialmente `undefined`.
+   - `configuracionPredeterminada`: Inicializada en `"Modo oscuro"`.
+   - `configuracionFinal`: Inicializada en `null`.
 
-Si se asignó un valor a configuracionFinal, lo imprime en consola.
-Si no se asignó un valor, muestra un mensaje indicando que no hay configuración disponible.
-Ejemplo práctico
-Supongamos los siguientes valores iniciales:
+2. **Condicionales para determinar el valor final:**
+   - Si el usuario define una configuración válida (`configuracionUsuario` no es `undefined` ni `null`), se utiliza esa.
+   - Si no, se usa el valor predeterminado (`configuracionPredeterminada`).
+   - Si ninguna de las dos está disponible, muestra un error.
 
-javascript
-Copiar
+3. **Mostrar el resultado final:**
+   - Si se asignó un valor a `configuracionFinal`, lo imprime en consola.
+   - Si no se asignó un valor, muestra un mensaje de advertencia.
+
+---
+
+# Ejemplo Práctico
+
+### Valores iniciales:
+```javascript
 let configuracionUsuario = "Modo claro"; // El usuario define su configuración
 let configuracionPredeterminada = "Modo oscuro"; // Valor predeterminado
 let configuracionFinal = null;
-La salida será:
+```
 
-plaintext
-Copiar
+### Salida esperada:
+```plaintext
 Configuración aplicada: Modo claro
-Puntos clave
-undefined: Aparece cuando una variable no tiene valor asignado, como configuracionUsuario al inicio.
-null: Se usa intencionalmente para indicar un estado "vacío", como en configuracionFinal al principio.
-Condicionales: Permiten verificar los valores y decidir cuál usar.
+```
+
+---
+
+# Puntos Clave
+- **`undefined`**: Aparece cuando una variable no tiene valor asignado, como `configuracionUsuario` al inicio.
+- **`null`**: Indica un estado intencionalmente "vacío", como en `configuracionFinal` al principio.
+- **Condicionales**: Permiten verificar los valores y decidir cuál usar.
+
+---
+
+# Mejoras Opcionales
+
+### Uso de Operador Lógico `||`
+El operador lógico `||` puede simplificar el código para asignar el valor de `configuracionFinal`:
+```javascript
+configuracionFinal = configuracionUsuario || configuracionPredeterminada || null;
+```
+
+### Manejo de Excepciones
+Para mejorar la robustez del código, podemos agregar manejo de excepciones en caso de que ocurra algún error inesperado:
+```javascript
+try {
+  configuracionFinal = configuracionUsuario || configuracionPredeterminada || null;
+
+  if (configuracionFinal !== null) {
+    console.log("Configuración aplicada:", configuracionFinal);
+  } else {
+    throw new Error("No se pudo aplicar ninguna configuración.");
+  }
+} catch (error) {
+  console.error(error.message);
+}
+```
